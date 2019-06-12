@@ -8,9 +8,27 @@
 
 import SwiftUI
 
+struct Person: Identifiable {
+    var id = UUID()
+    let name: String
+}
+
+struct SingleNameView: View {
+    var person: Person
+    var body: some View {
+        Text(person.name)
+    }
+}
+
 struct ContentView : View {
     var body: some View {
-        Text("Hello World")
+        let firstPerson = Person(name: "Dawid")
+        let secondPeson = Person(name: "Kamil")
+        let thirdPerson = Person(name: "Łukasz")
+        let personArray = [firstPerson, secondPeson, thirdPerson]
+        return List(personArray) { person in
+            SingleNameView(person: person)
+        }
     }
 }
 
