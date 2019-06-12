@@ -13,7 +13,7 @@ struct Person: Identifiable {
     let name: String
 }
 
-struct SingleNameView: View {
+struct NameRow: View {
     var person: Person
     var body: some View {
         Text(person.name)
@@ -25,9 +25,11 @@ struct ContentView : View {
         let firstPerson = Person(name: "Dawid")
         let secondPeson = Person(name: "Kamil")
         let thirdPerson = Person(name: "Łukasz")
+
         let personArray = [firstPerson, secondPeson, thirdPerson]
+
         return List(personArray) { person in
-            SingleNameView(person: person)
+            NameRow(person: person)
         }
     }
 }
